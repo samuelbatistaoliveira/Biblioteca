@@ -246,17 +246,20 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Botão Salvar -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSalvar"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSalvarAlteracoes"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="54dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/button_gold_background"
+                android:stateListAnimator="@null"
                 android:text="Salvar alterações"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="#F8F4EE"
-                app:backgroundTint="#2E7D32"
-                app:cornerRadius="14dp"
-                app:elevation="4dp" />
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

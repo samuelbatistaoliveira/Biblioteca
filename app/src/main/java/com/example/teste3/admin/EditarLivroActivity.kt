@@ -60,7 +60,7 @@ class EditarLivroActivity : AppCompatActivity() {
         binding.imgCapa.setOnClickListener { abrirGaleria() }
         binding.fabEditCapa.setOnClickListener { abrirGaleria() }
 
-        binding.btnSalvar.setOnClickListener {
+        binding.btnSalvarAlteracoes.setOnClickListener {
             val novoNome   = binding.etNome.text.toString().trim()
             val novoAutor  = binding.etAutor.text.toString().trim()
             val novoAno    = binding.etAno.text.toString().trim()

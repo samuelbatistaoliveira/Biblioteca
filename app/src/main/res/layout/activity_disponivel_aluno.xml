@@ -21,7 +21,7 @@
             android:text="Biblioteca Digital"
             android:textColor="#C9A84C"
             android:textSize="11sp"
-            android:textAllCaps="true"
+            android:textAllCaps="false"
             android:letterSpacing="0.15"
             android:fontFamily="sans-serif-medium" />
 
@@ -135,11 +135,40 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingHorizontal="16dp">
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="serif" android:text="Sala A" android:textColor="#2C1F0E" android:textSize="15sp" android:textStyle="bold" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Andar 1  •  Cap. 6 pessoas" android:textColor="#7A6A55" android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Sala A"
+                        android:textColor="#2C1F0E"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Andar 1  •  Cap. 6 pessoas"
+                        android:textColor="#7A6A55"
+                        android:textSize="12sp" />
                 </LinearLayout>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_status_livre" android:fontFamily="sans-serif-medium" android:letterSpacing="0.08" android:paddingHorizontal="10dp" android:paddingVertical="4dp" android:text="Livre" android:textAllCaps="true" android:textColor="#2C1F0E" android:textSize="11sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_status_livre"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.08"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="Disponível"
+                    android:textAllCaps="false"
+                    android:textColor="#2C1F0E"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -154,11 +183,39 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingHorizontal="16dp">
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="serif" android:text="Sala C" android:textColor="#2C1F0E" android:textSize="15sp" android:textStyle="bold" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Andar 2  •  Cap. 4 pessoas" android:textColor="#7A6A55" android:textSize="12sp" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Sala C"
+                        android:textColor="#2C1F0E"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Andar 2  •  Cap. 4 pessoas"
+                        android:textColor="#7A6A55"
+                        android:textSize="12sp" />
                 </LinearLayout>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_status_ocupada" android:fontFamily="sans-serif-medium" android:letterSpacing="0.08" android:paddingHorizontal="10dp" android:paddingVertical="4dp" android:text="Ocupada" android:textAllCaps="true" android:textColor="#2C1F0E" android:textSize="11sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_status_ocupada"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.08"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="Ocupada"
+                    android:textAllCaps="true"
+                    android:textColor="#2C1F0E"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -173,11 +230,39 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingHorizontal="16dp">
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="serif" android:text="Sala B" android:textColor="#2C1F0E" android:textSize="15sp" android:textStyle="bold" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Andar 1  •  Cap. 8 pessoas" android:textColor="#7A6A55" android:textSize="12sp" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Sala B"
+                        android:textColor="#2C1F0E"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Andar 1  •  Cap. 8 pessoas"
+                        android:textColor="#7A6A55"
+                        android:textSize="12sp" />
                 </LinearLayout>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_status_livre" android:fontFamily="sans-serif-medium" android:letterSpacing="0.08" android:paddingHorizontal="10dp" android:paddingVertical="4dp" android:text="Livre" android:textAllCaps="true" android:textColor="#2C1F0E" android:textSize="11sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_status_livre"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.08"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="Disponível"
+                    android:textAllCaps="false"
+                    android:textColor="#2C1F0E"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -192,11 +277,38 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingHorizontal="16dp">
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="serif" android:text="Sala D" android:textColor="#2C1F0E" android:textSize="15sp" android:textStyle="bold" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Andar 2  •  Cap. 10 pessoas" android:textColor="#7A6A55" android:textSize="12sp" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Sala D"
+                        android:textColor="#2C1F0E"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Andar 2  •  Cap. 10 pessoas"
+                        android:textColor="#7A6A55"
+                        android:textSize="12sp" />
                 </LinearLayout>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_status_ocupada" android:fontFamily="sans-serif-medium" android:letterSpacing="0.08" android:paddingHorizontal="10dp" android:paddingVertical="4dp" android:text="Ocupada" android:textAllCaps="true" android:textColor="#2C1F0E" android:textSize="11sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_status_ocupada"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.08"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="Ocupada"
+                    android:textAllCaps="true"
+                    android:textColor="#2C1F0E"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -211,11 +323,38 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingHorizontal="16dp">
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="serif" android:text="Sala E" android:textColor="#2C1F0E" android:textSize="15sp" android:textStyle="bold" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Andar 1  •  Cap. 4 pessoas" android:textColor="#7A6A55" android:textSize="12sp" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Sala E"
+                        android:textColor="#2C1F0E"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Andar 1  •  Cap. 4 pessoas"
+                        android:textColor="#7A6A55"
+                        android:textSize="12sp" />
                 </LinearLayout>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_status_livre" android:fontFamily="sans-serif-medium" android:letterSpacing="0.08" android:paddingHorizontal="10dp" android:paddingVertical="4dp" android:text="Livre" android:textAllCaps="true" android:textColor="#2C1F0E" android:textSize="11sp" />
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_status_livre"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.08"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="Disponivel"
+                    android:textAllCaps="false"
+                    android:textColor="#2C1F0E"
+                    android:textSize="11sp" />
             </LinearLayout>
 
         </LinearLayout>
