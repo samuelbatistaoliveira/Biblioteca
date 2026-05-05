@@ -8,22 +8,26 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import com.example.teste3.R
-import com.example.teste3.home_aluno.HomeActivity
-import com.example.teste3.login.ChatbotActivity
-import com.example.teste3.perfil.PrincipalPerfil as PerfilActivity
 
 class Disponivel : AppCompatActivity() {
+
+    private var origem = "aluno"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_disponivel)
 
-        ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { v, insets ->
-            insets
+        origem = intent.getStringExtra("origem") ?: "aluno"
+
+        if (origem == "admin") {
+            setContentView(R.layout.activity_disponivel)
+        } else {
+            setContentView(R.layout.activity_disponivel_aluno)
         }
 
-        // Salas LIVRES — vão para tela de horários
+        ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { v, insets -> insets }
+
+        // Salas LIVRES
         findViewById<LinearLayout>(R.id.cardSalaA).setOnClickListener {
             abrirHorarios("Sala A", "Andar 1", "6")
         }
@@ -34,7 +38,7 @@ class Disponivel : AppCompatActivity() {
             abrirHorarios("Sala E", "Andar 1", "4")
         }
 
-        // Salas OCUPADAS — vão para tela de detalhe
+        // Salas OCUPADAS
         findViewById<LinearLayout>(R.id.cardSalaC).setOnClickListener {
             abrirDetalhe("Sala C", "Andar 2", "4", "OCUPADA")
         }
@@ -42,58 +46,114 @@ class Disponivel : AppCompatActivity() {
             abrirDetalhe("Sala D", "Andar 2", "10", "OCUPADA")
         }
 
-        // Menu inferior — calendário ativo pois estamos na tela de salas
-        setNavAtivo("reservas")
+        if (origem == "admin") {
+            configurarMenuAdmin()
+        } else {
+            configurarMenuAluno()
+        }
+    }
 
-        findViewById<LinearLayout>(R.id.navMenu).setOnClickListener {
-            startActivity(Intent(this, ChatbotActivity::class.java))
+    private fun configurarMenuAdmin() {
+        setNavAtivo("calendar", isAdmin = true)
+
+        findViewById<LinearLayout>(R.id.navChat).setOnClickListener {
+            setNavAtivo("chat", isAdmin = true)
+            startActivity(Intent(this, com.example.teste3.admin.AluguelAdmin::class.java))
         }
         findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
+            setNavAtivo("home", isAdmin = true)
+            startActivity(Intent(this, com.example.teste3.admin.HomeAdminActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            })
+        }
+        findViewById<LinearLayout>(R.id.navCalendar).setOnClickListener {
+            // já estamos na tela de salas
+        }
+        findViewById<LinearLayout>(R.id.navCategories).setOnClickListener {
+            setNavAtivo("categories", isAdmin = true)
+            startActivity(Intent(this, com.example.teste3.mapa.MapaLivroActivity::class.java).apply {
+                putExtra("andar", 0)
+                putExtra("ponto_x", 0.65f)
+                putExtra("ponto_y", 0.30f)
+                putExtra("localizacao_texto", "Ciências — Estante 3, Prat. B")
+                putExtra("origem", "admin")
+            })
+        }
+        findViewById<LinearLayout>(R.id.navProfile).setOnClickListener {
+            setNavAtivo("profile", isAdmin = true)
+            startActivity(Intent(this, com.example.teste3.admin.perfiladm::class.java))
+        }
+    }
+
+    private fun configurarMenuAluno() {
+        setNavAtivo("reservas", isAdmin = false)
+
+        findViewById<LinearLayout>(R.id.navChat).setOnClickListener {
+            startActivity(Intent(this, com.example.teste3.login.ChatbotActivity::class.java))
+        }
+        findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
+            startActivity(Intent(this, com.example.teste3.home_aluno.HomeActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            })
         }
         findViewById<LinearLayout>(R.id.navReservas).setOnClickListener {
             // já estamos na tela de salas
         }
         findViewById<LinearLayout>(R.id.navSalas).setOnClickListener {
-            startActivity(Intent(this, com.example.teste3.mapa.MapaPrincipal::class.java))
+            startActivity(Intent(this, com.example.teste3.mapa.MapaLivroActivity::class.java).apply {
+                putExtra("andar", 0)
+                putExtra("ponto_x", 0.65f)
+                putExtra("ponto_y", 0.30f)
+                putExtra("localizacao_texto", "Ciências — Estante 3, Prat. B")
+                putExtra("origem", "aluno")
+            })
         }
         findViewById<LinearLayout>(R.id.navPerfil).setOnClickListener {
-            startActivity(Intent(this, PerfilActivity::class.java))
+            startActivity(Intent(this, com.example.teste3.perfil.PrincipalPerfil::class.java))
         }
     }
 
     private fun abrirHorarios(nomeSala: String, andar: String, capacidade: String) {
-        val intent = Intent(this, salahorarios::class.java)
-        intent.putExtra("SALA_NOME", nomeSala)
-        intent.putExtra("SALA_ANDAR", andar)
-        intent.putExtra("SALA_CAPACIDADE", capacidade)
-        startActivity(intent)
+        Intent(this, salahorarios::class.java).also {
+            it.putExtra("SALA_NOME", nomeSala)
+            it.putExtra("SALA_ANDAR", andar)
+            it.putExtra("SALA_CAPACIDADE", capacidade)
+            startActivity(it)
+        }
     }
 
     private fun abrirDetalhe(nomeSala: String, andar: String, capacidade: String, status: String) {
-        val intent = Intent(this, saladetalhe::class.java)
-        intent.putExtra("SALA_NOME", nomeSala)
-        intent.putExtra("SALA_ANDAR", andar)
-        intent.putExtra("SALA_CAPACIDADE", capacidade)
-        intent.putExtra("SALA_STATUS", status)
-        startActivity(intent)
+        Intent(this, saladetalhe::class.java).also {
+            it.putExtra("SALA_NOME", nomeSala)
+            it.putExtra("SALA_ANDAR", andar)
+            it.putExtra("SALA_CAPACIDADE", capacidade)
+            it.putExtra("SALA_STATUS", status)
+            startActivity(it)
+        }
     }
 
-    private fun setNavAtivo(ativo: String) {
-        data class NavItem(val layoutId: Int, val iconId: Int)
+    private fun setNavAtivo(ativo: String, isAdmin: Boolean) {
+        val itens = if (isAdmin) {
+            mapOf(
+                "chat"       to Pair(R.id.navChat,       R.id.iconChat),
+                "home"       to Pair(R.id.navHome,       R.id.iconHome),
+                "calendar"   to Pair(R.id.navCalendar,   R.id.iconCalendar),
+                "categories" to Pair(R.id.navCategories, R.id.iconCategories),
+                "profile"    to Pair(R.id.navProfile,    R.id.iconProfile)
+            )
+        } else {
+            mapOf(
+                "chat"     to Pair(R.id.navChat,     R.id.iconChat),
+                "home"     to Pair(R.id.navHome,     R.id.iconHome),
+                "reservas" to Pair(R.id.navReservas, R.id.iconReservas),
+                "salas"    to Pair(R.id.navSalas,    R.id.iconSalas),
+                "perfil"   to Pair(R.id.navPerfil,   R.id.iconPerfil)
+            )
+        }
 
-        val itens = mapOf(
-            "chat"     to NavItem(R.id.navMenu,     R.id.iconChat),
-            "home"     to NavItem(R.id.navHome,     R.id.iconHome),
-            "reservas" to NavItem(R.id.navReservas, R.id.iconReservas),
-            "salas"    to NavItem(R.id.navSalas,    R.id.iconSalas),
-            "perfil"   to NavItem(R.id.navPerfil,   R.id.iconPerfil)
-        )
-
-        itens.forEach { (item, nav) ->
-            val layout = findViewById<LinearLayout>(nav.layoutId) ?: return@forEach
-            val icon   = findViewById<ImageView>(nav.iconId)      ?: return@forEach
-
+        itens.forEach { (item, pair) ->
+            val layout = findViewById<LinearLayout>(pair.first) ?: return@forEach
+            val icon   = findViewById<ImageView>(pair.second)   ?: return@forEach
             val selecionado = item == ativo
             layout.isSelected = selecionado
             icon.isSelected   = selecionado

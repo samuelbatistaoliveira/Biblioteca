@@ -25,12 +25,14 @@
             android:gravity="center"
             android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:contentDescription="Menu">
             <ImageView
                 android:id="@+id/iconMenu"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/ic_menu"
+                android:contentDescription="Menu"
                 app:tint="@color/bottom_nav_colors" />
         </LinearLayout>
 
@@ -43,12 +45,14 @@
             android:gravity="center"
             android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:contentDescription="Início">
             <ImageView
                 android:id="@+id/iconHome"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/ic_home"
+                android:contentDescription="Início"
                 app:tint="@color/bottom_nav_colors" />
         </LinearLayout>
 
@@ -61,12 +65,14 @@
             android:gravity="center"
             android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:contentDescription="Calendário">
             <ImageView
                 android:id="@+id/iconCalendar"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/ic_calendar"
+                android:contentDescription="Calendário"
                 app:tint="@color/bottom_nav_colors" />
         </LinearLayout>
 
@@ -79,12 +85,14 @@
             android:gravity="center"
             android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:contentDescription="Mapa">
             <ImageView
                 android:id="@+id/iconSignpost"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/ic_signpost"
+                android:contentDescription="Mapa"
                 app:tint="@color/bottom_nav_colors" />
         </LinearLayout>
 
@@ -97,12 +105,14 @@
             android:gravity="center"
             android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:contentDescription="Perfil">
             <ImageView
                 android:id="@+id/iconPerfil"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/ic_person"
+                android:contentDescription="Perfil"
                 app:tint="@color/bottom_nav_colors" />
         </LinearLayout>
 
@@ -175,35 +185,41 @@
                     android:gravity="center_vertical"
                     android:focusable="false">
 
+                    <!-- Botão lápis: 48x48dp para touch target correto -->
                     <FrameLayout
                         android:id="@+id/btnEditarPerfil"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/circle_dark_bg"
                         android:clickable="true"
-                        android:focusable="true">
+                        android:focusable="true"
+                        android:contentDescription="Editar perfil">
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_edit"
                             android:focusable="false"
+                            android:contentDescription="Editar perfil"
                             app:tint="#C8A96E" />
                     </FrameLayout>
 
+                    <!-- Botão engrenagem: 48x48dp para touch target correto -->
                     <FrameLayout
                         android:id="@+id/btnConfiguracoes"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:background="@drawable/circle_dark_bg"
                         android:clickable="true"
-                        android:focusable="true">
+                        android:focusable="true"
+                        android:contentDescription="Configurações">
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="18dp"
                             android:layout_gravity="center"
                             android:focusable="false"
+                            android:contentDescription="Configurações"
                             android:src="@drawable/ic_settings"
                             app:tint="#C8A96E" />
                     </FrameLayout>
@@ -251,6 +267,7 @@
                                 android:layout_height="72dp"
                                 android:src="@drawable/veio"
                                 android:focusable="false"
+                                android:contentDescription="Foto do administrador"
                                 app:civ_border_color="#C8A96E"
                                 app:civ_border_width="3dp" />
 
@@ -457,6 +474,7 @@
                 android:layout_marginBottom="16dp"
                 android:focusable="true"
                 android:clickable="true"
+                android:contentDescription="Gerenciar acervo de livros"
                 app:cardBackgroundColor="#F4EDE3"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="6dp">
@@ -480,6 +498,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_signpost"
                             android:focusable="false"
+                            android:contentDescription="Acervo"
                             app:tint="#C8A96E" />
                     </FrameLayout>
 
@@ -518,6 +537,7 @@
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/ic_arrow_right"
                         android:focusable="false"
+                        android:contentDescription="Ir para acervo"
                         app:tint="#555555" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -531,6 +551,7 @@
                 android:layout_marginBottom="16dp"
                 android:focusable="true"
                 android:clickable="true"
+                android:contentDescription="Ver atrasos e multas"
                 app:cardBackgroundColor="#F4EDE3"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="6dp">
@@ -554,6 +575,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_calendar"
                             android:focusable="false"
+                            android:contentDescription="Atrasos e Multas"
                             app:tint="#C0392B" />
                     </FrameLayout>
 
@@ -606,6 +628,7 @@
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/ic_arrow_right"
                         android:focusable="false"
+                        android:contentDescription="Ir para atrasos e multas"
                         app:tint="#555555" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

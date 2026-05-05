@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#FDF8F2">
 
-    <!-- Toolbar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -21,7 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Avatar CircleImageView -->
     <FrameLayout
         android:id="@+id/frameAvatar"
         android:layout_width="190dp"
@@ -42,7 +40,6 @@
 
     </FrameLayout>
 
-    <!-- Editar Foto Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnEditarFoto"
         android:layout_width="0dp"
@@ -63,14 +60,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Salvar Alterações Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSalvar"
         android:layout_width="0dp"
         android:layout_height="58dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="32dp"
         android:text="Salvar alterações"
         android:textColor="#FFFFFF"
         android:textSize="17sp"
@@ -80,28 +76,8 @@
         app:backgroundTint="@null"
         android:background="@drawable/button_gold_background"
         app:cornerRadius="12dp"
-        app:layout_constraintBottom_toTopOf="@id/btnCancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Cancelar Button -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnCancelar"
-        android:layout_width="0dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/button_outline_gold"
-        android:stateListAnimator="@null"
-        android:text="Cancelar"
-        android:textAllCaps="false"
-        android:textColor="#2D2D2D"
-        android:textSize="16sp"
-        app:backgroundTint="@null"
-        app:cornerRadius="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

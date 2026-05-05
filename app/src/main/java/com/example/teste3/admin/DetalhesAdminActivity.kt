@@ -69,10 +69,10 @@ class DetalhesAdminActivity : AppCompatActivity() {
                 .show()
         }
 
-        // ✅ Botão Localizar Livro
         binding.btnLocalizar.setOnClickListener {
-            Toast.makeText(this, "Localizando \"$title\" na biblioteca...", Toast.LENGTH_SHORT).show()
-            // Adicione a navegação para a tela de mapa/localização aqui
+            startActivity(Intent(this, com.example.teste3.mapa.MapaPrincipal::class.java).apply {
+                putExtra("origem", "admin")
+            })
         }
 
         setNavAtivo("home")
@@ -89,7 +89,10 @@ class DetalhesAdminActivity : AppCompatActivity() {
             startActivity(Intent(this, com.example.teste3.salas.AdmSalas::class.java))
         }
         binding.bottomNav.navCategories.setOnClickListener {
-            Toast.makeText(this, "Categorias", Toast.LENGTH_SHORT).show()
+            setNavAtivo("categories")
+            startActivity(Intent(this, com.example.teste3.mapa.MapaPrincipal::class.java).apply {
+                putExtra("origem", "admin")
+            })
         }
         binding.bottomNav.navProfile.setOnClickListener {
             startActivity(Intent(this, perfiladm::class.java))

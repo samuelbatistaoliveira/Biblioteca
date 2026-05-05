@@ -6,6 +6,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import com.example.teste3.R
 
 class perfiladm : AppCompatActivity() {
@@ -23,6 +24,18 @@ class perfiladm : AppCompatActivity() {
             startActivity(Intent(this, configadm::class.java))
         }
 
+        // Card Acervo → vai para Home Admin
+        findViewById<CardView>(R.id.cardGerenciarAcervo).setOnClickListener {
+            startActivity(Intent(this, HomeAdminActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            })
+        }
+
+        // Card Atrasos e Multas → vai para Gerenciamento de Aluguel
+        findViewById<CardView>(R.id.cardVerAtrasos).setOnClickListener {
+            startActivity(Intent(this, AluguelAdmin::class.java))
+        }
+
         setNavAtivo("perfil")
 
         findViewById<LinearLayout>(R.id.navMenu)?.setOnClickListener {
@@ -37,7 +50,9 @@ class perfiladm : AppCompatActivity() {
             startActivity(Intent(this, com.example.teste3.salas.AdmSalas::class.java))
         }
         findViewById<LinearLayout>(R.id.navSignpost)?.setOnClickListener {
-            startActivity(Intent(this, HomeAdminActivity::class.java))
+            startActivity(Intent(this, com.example.teste3.mapa.MapaPrincipal::class.java).apply {
+                putExtra("origem", "admin")
+            })
         }
         findViewById<LinearLayout>(R.id.navPerfil)?.setOnClickListener {
             // já está nesta tela

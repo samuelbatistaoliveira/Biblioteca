@@ -4,12 +4,16 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
+import android.content.res.ColorStateList
 import coil.load
-import com.example.teste3.BotaoNav.BottomNavHelper
 import com.example.teste3.BookRepository
+import com.example.teste3.R
 import com.example.teste3.databinding.ActivityEditarLivroBinding
 import com.example.teste3.home_aluno.Book
 
@@ -37,7 +41,6 @@ class EditarLivroActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.toolbar.setNavigationOnClickListener { finish() }
 
-        // Recebe os dados do livro para pré-preencher
         val oldTitle = intent.getStringExtra("book_title")  ?: ""
         val author   = intent.getStringExtra("book_author") ?: ""
         val cover    = intent.getStringExtra("book_cover")  ?: ""
@@ -54,11 +57,9 @@ class EditarLivroActivity : AppCompatActivity() {
         binding.etEstado.setText(status)
         binding.imgCapa.load(cover)
 
-        // Editar capa
         binding.imgCapa.setOnClickListener { abrirGaleria() }
         binding.fabEditCapa.setOnClickListener { abrirGaleria() }
 
-        // Salvar alterações
         binding.btnSalvar.setOnClickListener {
             val novoNome   = binding.etNome.text.toString().trim()
             val novoAutor  = binding.etAutor.text.toString().trim()
@@ -86,10 +87,9 @@ class EditarLivroActivity : AppCompatActivity() {
             BookRepository.update(oldTitle, livroAtualizado)
             Toast.makeText(this, "Livro atualizado com sucesso!", Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(this, HomeAdminActivity::class.java).apply {
+            startActivity(Intent(this, HomeAdminActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-            }
-            startActivity(intent)
+            })
             finish()
         }
 
@@ -102,26 +102,34 @@ class EditarLivroActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNav() {
-        BottomNavHelper.setup(
-            context         = this,
-            navChat         = binding.bottomNav.navChat,
-            navChatBg       = binding.bottomNav.navChatBg,
-            navHome         = binding.bottomNav.navHome,
-            navHomeBg       = binding.bottomNav.navHomeBg,
-            navCalendar     = binding.bottomNav.navCalendar,
-            navCalendarBg   = binding.bottomNav.navCalendarBg,
-            navCategories   = binding.bottomNav.navCategories,
-            navCategoriesBg = binding.bottomNav.navCategoriesBg,
-            navProfile      = binding.bottomNav.navProfile,
-            navProfileBg    = binding.bottomNav.navProfileBg,
-            activeItem      = BottomNavHelper.NavItem.HOME
+        // ícone home ativo
+        ImageViewCompat.setImageTintList(
+            findViewById(R.id.iconHome),
+            ColorStateList.valueOf(ContextCompat.getColor(this, R.color.gold))
         )
-        binding.bottomNav.navChat.setOnClickListener { }
-        binding.bottomNav.navHome.setOnClickListener {
-            val intent = Intent(this, HomeAdminActivity::class.java).apply {
+
+        findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
+            startActivity(Intent(this, HomeAdminActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-            }
-            startActivity(intent)
+            })
+        }
+
+        findViewById<LinearLayout>(R.id.navChat).setOnClickListener {
+            startActivity(Intent(this, AluguelAdmin::class.java))
+        }
+
+        findViewById<LinearLayout>(R.id.navCalendar).setOnClickListener {
+            startActivity(Intent(this, com.example.teste3.salas.AdmSalas::class.java))
+        }
+
+        findViewById<LinearLayout>(R.id.navCategories).setOnClickListener {
+            startActivity(Intent(this, com.example.teste3.mapa.MapaPrincipal::class.java).apply {
+                putExtra("origem", "admin")
+            })
+        }
+
+        findViewById<LinearLayout>(R.id.navProfile).setOnClickListener {
+            startActivity(Intent(this, perfiladm::class.java))
         }
     }
 }

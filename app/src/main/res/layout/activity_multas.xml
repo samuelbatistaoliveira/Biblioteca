@@ -1,58 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#F5F0E8"
     tools:context=".MultasActivity">
+
+    <!-- ── HEADER ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F0E8"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnVoltar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Voltar"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Multas"
+            android:textColor="#3D2C1E"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
 
     <!-- ── CONTEÚDO ROLÁVEL ── -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="80dp"
-        android:clipToPadding="false"
-        android:overScrollMode="never">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#F5F0E8"
+        android:overScrollMode="never"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- ── HEADER ── -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#F5F0E8"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="16dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/btnVoltar"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="Voltar"
-                    android:src="@drawable/ic_arrow_back" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:text="Multas"
-                    android:textColor="#3D2C1E"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif-medium" />
-
-            </LinearLayout>
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
 
             <!-- ── CARD DE USUÁRIO ── -->
             <androidx.cardview.widget.CardView
@@ -74,7 +77,6 @@
                     android:gravity="center_vertical"
                     android:focusable="false">
 
-                    <!-- Foto com borda dourada -->
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/ivAvatar"
                         android:layout_width="72dp"
@@ -84,7 +86,6 @@
                         app:civ_border_color="#C8A96E"
                         app:civ_border_width="2.5dp" />
 
-                    <!-- Dados do usuário -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -111,7 +112,6 @@
                             android:textColor="#8A7060"
                             android:textSize="13sp" />
 
-                        <!-- Badge Membro Ativo -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -189,7 +189,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- Faixa vermelha superior -->
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="5dp"
@@ -201,7 +200,6 @@
                         android:orientation="horizontal"
                         android:padding="16dp">
 
-                        <!-- Capa do livro -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="64dp"
                             android:layout_height="90dp"
@@ -219,7 +217,6 @@
 
                         </androidx.cardview.widget.CardView>
 
-                        <!-- Informações do livro -->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -238,7 +235,6 @@
                                 android:textStyle="bold"
                                 android:fontFamily="sans-serif-medium" />
 
-                            <!-- Data de entrega -->
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -264,7 +260,6 @@
 
                             </LinearLayout>
 
-                            <!-- Badge de atraso -->
                             <TextView
                                 android:id="@+id/tvEstado1"
                                 android:layout_width="wrap_content"
@@ -280,7 +275,6 @@
                                 android:textSize="12sp"
                                 android:textStyle="bold" />
 
-                            <!-- Valor da multa -->
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -313,7 +307,6 @@
                             </LinearLayout>
 
                         </LinearLayout>
-
 
                     </LinearLayout>
                 </LinearLayout>
@@ -362,17 +355,116 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- ── BOTTOM NAVIGATION FIXA ── -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+    <!-- ── DIVISOR ── -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2A2A2A" />
+
+    <!-- ── BOTTOM NAV CUSTOMIZADO ── -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:layout_gravity="bottom"
-        android:background="#121212"
+        android:background="#1A1A1A"
+        android:orientation="horizontal"
         android:elevation="20dp"
-        app:itemIconTint="@color/bottom_nav_colors"
-        app:itemTextColor="@color/bottom_nav_colors"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/bottom_nav_menu" />
+        android:gravity="center_vertical">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <LinearLayout
+            android:id="@+id/navChat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView
+                android:id="@+id/iconChat"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_chat"
+                android:contentDescription="Chat"
+                app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView
+                android:id="@+id/iconHome"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_home"
+                android:contentDescription="Início"
+                app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navReservas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView
+                android:id="@+id/iconReservas"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_calendar"
+                android:contentDescription="Reservas"
+                app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navSalas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView
+                android:id="@+id/iconSalas"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_signpost"
+                android:contentDescription="Salas"
+                app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navPerfil"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView
+                android:id="@+id/iconPerfil"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_person"
+                android:contentDescription="Perfil"
+                app:tint="#C8A96E" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

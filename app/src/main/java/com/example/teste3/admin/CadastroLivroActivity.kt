@@ -46,9 +46,10 @@ class CadastroLivroActivity : AppCompatActivity() {
             val nome   = binding.etNome.text.toString().trim()
             val autor  = binding.etAutor.text.toString().trim()
             val ano    = binding.etAno.text.toString().trim()
+            val genero = binding.etGenero.text.toString().trim() // ← novo
             val codigo = binding.etCodigo.text.toString().trim()
 
-            if (nome.isEmpty() || autor.isEmpty() || ano.isEmpty() || codigo.isEmpty()) {
+            if (nome.isEmpty() || autor.isEmpty() || ano.isEmpty() || genero.isEmpty() || codigo.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -59,7 +60,7 @@ class CadastroLivroActivity : AppCompatActivity() {
                 author   = autor,
                 coverUrl = capaUri?.toString() ?: "",
                 year     = ano,
-                genre    = codigo
+                genre    = genero, // ← agora usa o campo correto
             )
             BookRepository.add(novoLivro)
 
@@ -100,16 +101,13 @@ class CadastroLivroActivity : AppCompatActivity() {
         }
 
         findViewById<LinearLayout>(R.id.navCategories).setOnClickListener {
-            startActivity(Intent(this, com.example.teste3.mapa.MapaPrincipal::class.java)) // ✅
+            startActivity(Intent(this, com.example.teste3.mapa.MapaPrincipal::class.java).apply {
+                putExtra("origem", "admin")
+            })
         }
 
         findViewById<LinearLayout>(R.id.navProfile).setOnClickListener {
             startActivity(Intent(this, perfiladm::class.java))
-        }
-        findViewById<LinearLayout>(R.id.navCategories).setOnClickListener {
-            startActivity(Intent(this, com.example.teste3.mapa.MapaPrincipal::class.java).apply {
-                putExtra("origem", "admin")
-            })
         }
     }
 }

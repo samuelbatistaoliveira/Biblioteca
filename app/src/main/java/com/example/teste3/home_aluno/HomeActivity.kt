@@ -26,8 +26,11 @@ data class Book(
     val year: String = "-",
     val genre: String = "-",
     val status: String = "Disponível",
+    val andar: Int = 0,
+    val pontoX: Float = 0f,
+    val pontoY: Float = 0f,
+    val localizacao: String = "",
 )
-
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding

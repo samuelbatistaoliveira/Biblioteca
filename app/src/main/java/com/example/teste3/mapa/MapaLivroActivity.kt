@@ -18,13 +18,19 @@ class MapaLivroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mapa_livro)
 
         val andarDoLivro = intent.getIntExtra("andar", 0)
         val pontoX       = intent.getFloatExtra("ponto_x", 0.5f)
         val pontoY       = intent.getFloatExtra("ponto_y", 0.5f)
         val localizacao  = intent.getStringExtra("localizacao_texto") ?: "Localização do livro"
-        val origem       = intent.getStringExtra("origem") ?: "aluno" // ✅ lido aqui
+        val origem       = intent.getStringExtra("origem") ?: "aluno"
+
+        // ── Escolhe o layout pelo perfil ──
+        if (origem == "admin") {
+            setContentView(R.layout.activity_mapa_livro)
+        } else {
+            setContentView(R.layout.activity_mapa_livro_aluno)
+        }
 
         viewPager        = findViewById(R.id.viewPagerMapas)
         tabTerreo        = findViewById(R.id.tabTerreo)
@@ -53,9 +59,7 @@ class MapaLivroActivity : AppCompatActivity() {
 
         atualizarTabs(andarDoLivro)
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                atualizarTabs(position)
-            }
+            override fun onPageSelected(position: Int) { atualizarTabs(position) }
         })
 
         tabTerreo.setOnClickListener { viewPager.currentItem = 0 }
@@ -65,51 +69,60 @@ class MapaLivroActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        setNavAtivo(R.id.iconSalas)
+        if (origem == "admin") {
+            setNavAtivo(R.id.iconCategories)
 
-        findViewById<LinearLayout>(R.id.navMenu).setOnClickListener {
-            setNavAtivo(R.id.iconChat)
-            startActivity(Intent(this, com.example.teste3.login.ChatbotActivity::class.java))
-        }
-
-        findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
-            setNavAtivo(R.id.iconHome)
-            if (origem == "admin") {
+            findViewById<LinearLayout>(R.id.navChat).setOnClickListener {
+                startActivity(Intent(this, com.example.teste3.admin.AluguelAdmin::class.java))
+            }
+            findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
                 startActivity(Intent(this, com.example.teste3.admin.HomeAdminActivity::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 })
-            } else {
+            }
+            findViewById<LinearLayout>(R.id.navCalendar).setOnClickListener {
+                startActivity(Intent(this, com.example.teste3.salas.Disponivel::class.java).apply {
+                    putExtra("origem", "admin")
+                })
+            }
+            findViewById<LinearLayout>(R.id.navCategories).setOnClickListener { }
+            findViewById<LinearLayout>(R.id.navProfile).setOnClickListener {
+                startActivity(Intent(this, com.example.teste3.admin.perfiladm::class.java))
+            }
+
+        } else {
+            setNavAtivo(R.id.iconSalas)
+
+            findViewById<LinearLayout>(R.id.navChat).setOnClickListener {
+                startActivity(Intent(this, com.example.teste3.login.ChatbotActivity::class.java))
+            }
+            findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
                 startActivity(Intent(this, com.example.teste3.home_aluno.HomeActivity::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 })
             }
-        }
-
-        findViewById<LinearLayout>(R.id.navReservas).setOnClickListener {
-            setNavAtivo(R.id.iconReservas)
-            startActivity(Intent(this, com.example.teste3.salas.Disponivel::class.java))
-        }
-
-        findViewById<LinearLayout>(R.id.navSalas).setOnClickListener {
-            setNavAtivo(R.id.iconSalas)
-        }
-
-        findViewById<LinearLayout>(R.id.navPerfil).setOnClickListener {
-            setNavAtivo(R.id.iconPerfil)
-            startActivity(Intent(this, com.example.teste3.perfil.PrincipalPerfil::class.java))
+            findViewById<LinearLayout>(R.id.navReservas).setOnClickListener {
+                startActivity(Intent(this, com.example.teste3.salas.Disponivel::class.java).apply {
+                    putExtra("origem", "aluno")
+                })
+            }
+            findViewById<LinearLayout>(R.id.navSalas).setOnClickListener { }
+            findViewById<LinearLayout>(R.id.navPerfil).setOnClickListener {
+                startActivity(Intent(this, com.example.teste3.perfil.PrincipalPerfil::class.java))
+            }
         }
     }
 
     private fun setNavAtivo(idAtivo: Int) {
-        listOf(
-            R.id.iconChat,
-            R.id.iconHome,
-            R.id.iconReservas,
-            R.id.iconSalas,
-            R.id.iconPerfil
-        ).forEach { id ->
+        val ids = if (intent.getStringExtra("origem") == "admin") {
+            listOf(R.id.iconChat, R.id.iconHome, R.id.iconCalendar, R.id.iconCategories, R.id.iconProfile)
+        } else {
+            listOf(R.id.iconChat, R.id.iconHome, R.id.iconReservas, R.id.iconSalas, R.id.iconPerfil)
+        }
+
+        ids.forEach { id ->
             val cor = if (id == idAtivo) "#C9A84C" else "#8A8A8A"
-            findViewById<ImageView>(id).setColorFilter(
+            findViewById<ImageView>(id)?.setColorFilter(
                 android.graphics.Color.parseColor(cor),
                 android.graphics.PorterDuff.Mode.SRC_IN
             )

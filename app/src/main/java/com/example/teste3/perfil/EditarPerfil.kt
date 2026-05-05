@@ -38,10 +38,5 @@ class EditarPerfil : AppCompatActivity() {
         btnSalvar.setOnClickListener {
             finish()
         }
-
-        val btnCancelar = findViewById<Button>(R.id.btnCancelar)
-        btnCancelar.setOnClickListener {
-            finish()
-        }
     }
 }

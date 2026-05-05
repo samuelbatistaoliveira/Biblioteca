@@ -41,51 +41,11 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#C9A84C" />
 
-    <!-- SEARCH BAR -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/bg_search_bar"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_search"
-            android:contentDescription="Buscar"
-            app:tint="#7A6A55" />
 
-        <EditText
-            android:id="@+id/etBuscarLivro"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            android:hint="Pesquise um livro..."
-            android:textColorHint="#B0A090"
-            android:textColor="#2C1F0E"
-            android:textSize="14sp"
-            android:background="@null"
-            android:inputType="text"
-            android:imeOptions="actionSearch"
-            android:singleLine="true"
-            android:minHeight="48dp" />
-
-    </LinearLayout>
+    <!-- BOTTOM NAV ADMIN -->
+    <include layout="@layout/bottom_nav_admin" />
 
     <!-- RESULTADO DA BUSCA -->
     <LinearLayout

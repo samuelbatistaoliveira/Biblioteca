@@ -2,7 +2,7 @@ package com.example.teste3.mapa
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.teste3.views.CustomMapView  // ✅ corrigido
+import com.example.teste3.views.CustomMapView
 
 data class AndarMapa(
     val drawableRes: Int,
