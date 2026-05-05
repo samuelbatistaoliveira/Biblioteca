@@ -177,7 +177,7 @@
                     android:paddingTop="4dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="4dp"
-                    android:text="PENDENTE"
+                    android:text="Solicitação"
                     android:textColor="#2C1F0E"
                     android:textSize="11sp" />
 
@@ -232,7 +232,7 @@
                     android:paddingTop="4dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="4dp"
-                    android:text="PENDENTE"
+                    android:text="Devolução"
                     android:textColor="#F5EDD8"
                     android:textSize="11sp" />
 
@@ -287,7 +287,7 @@
                     android:paddingTop="4dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="4dp"
-                    android:text="PENDENTE"
+                    android:text="Solicitação"
                     android:textColor="#2C1F0E"
                     android:textSize="11sp" />
 
@@ -342,7 +342,7 @@
                     android:paddingTop="4dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="4dp"
-                    android:text="PENDENTE"
+                    android:text="Devolução"
                     android:textColor="#F5EDD8"
                     android:textSize="11sp" />
 
@@ -397,7 +397,7 @@
                     android:paddingTop="4dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="4dp"
-                    android:text="PENDENTE"
+                    android:text="Solicitação"
                     android:textColor="#2C1F0E"
                     android:textSize="11sp" />
 
