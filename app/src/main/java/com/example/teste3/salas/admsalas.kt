@@ -15,18 +15,18 @@ class AdmSalas : AppCompatActivity() {
     private data class NavItem(val layoutId: Int, val iconId: Int)
 
     private val navItens = mapOf(
-        "menu"     to NavItem(R.id.navChat,     R.id.iconChat),
-        "home"     to NavItem(R.id.navHome,     R.id.iconHome),
-        "reservas" to NavItem(R.id.navReservas, R.id.iconReservas),
-        "salas"    to NavItem(R.id.navSalas,    R.id.iconSalas),
-        "perfil"   to NavItem(R.id.navPerfil,   R.id.iconPerfil)
+        "chat"       to NavItem(R.id.navChat,       R.id.iconChat),
+        "home"       to NavItem(R.id.navHome,       R.id.iconHome),
+        "calendar"   to NavItem(R.id.navCalendar,   R.id.iconCalendar),
+        "categories" to NavItem(R.id.navCategories, R.id.iconCategories),
+        "profile"    to NavItem(R.id.navProfile,    R.id.iconProfile)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admsalas)
 
-        setNavAtivo("reservas")
+        setNavAtivo("calendar")
 
         findViewById<LinearLayout>(R.id.navChat)?.setOnClickListener {
             startActivity(Intent(this, AluguelAdmin::class.java))
@@ -36,30 +36,69 @@ class AdmSalas : AppCompatActivity() {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             })
         }
-        findViewById<LinearLayout>(R.id.navReservas)?.setOnClickListener {
+        findViewById<LinearLayout>(R.id.navCalendar)?.setOnClickListener {
             // já está nesta tela
         }
-        findViewById<LinearLayout>(R.id.navSalas)?.setOnClickListener {
-            // já está nesta tela
+        findViewById<LinearLayout>(R.id.navCategories)?.setOnClickListener {
+            startActivity(Intent(this, com.example.teste3.mapa.MapaLivroActivity::class.java).apply {
+                putExtra("origem", "admin")
+            })
         }
-        findViewById<LinearLayout>(R.id.navPerfil)?.setOnClickListener {
+        findViewById<LinearLayout>(R.id.navProfile)?.setOnClickListener {
             startActivity(Intent(this, perfiladm::class.java))
         }
 
-        val irParaCheck = { startActivity(Intent(this, CheckAdmin::class.java)) }
+        // Salas LIVRES → CheckAdmin
+        findViewById<LinearLayout>(R.id.cardSalaA)?.setOnClickListener {
+            startActivity(Intent(this, CheckAdmin::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            })
+        }
+        findViewById<LinearLayout>(R.id.cardSalaB)?.setOnClickListener {
+            startActivity(Intent(this, CheckAdmin::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            })
+        }
+        findViewById<LinearLayout>(R.id.cardSalaE)?.setOnClickListener {
+            startActivity(Intent(this, CheckAdmin::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            })
+        }
 
-        findViewById<LinearLayout>(R.id.cardSalaA)?.setOnClickListener { irParaCheck() }
-        findViewById<LinearLayout>(R.id.cardSalaB)?.setOnClickListener { irParaCheck() }
-        findViewById<LinearLayout>(R.id.cardSalaC)?.setOnClickListener { irParaCheck() }
-        findViewById<LinearLayout>(R.id.cardSalaD)?.setOnClickListener { irParaCheck() }
-        findViewById<LinearLayout>(R.id.cardSalaE)?.setOnClickListener { irParaCheck() }
+        // Salas OCUPADAS → saladetalhe
+        findViewById<LinearLayout>(R.id.cardSalaC)?.setOnClickListener {
+            startActivity(Intent(this, saladetalhe::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                putExtra("SALA_NOME", "Sala C")
+                putExtra("SALA_ANDAR", "Andar 2")
+                putExtra("SALA_CAPACIDADE", "4")
+                putExtra("SALA_STATUS", "OCUPADA")
+                putExtra("origem", "admin")
+            })
+        }
+        findViewById<LinearLayout>(R.id.cardSalaD)?.setOnClickListener {
+            startActivity(Intent(this, saladetalhe::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                putExtra("SALA_NOME", "Sala D")
+                putExtra("SALA_ANDAR", "Andar 2")
+                putExtra("SALA_CAPACIDADE", "10")
+                putExtra("SALA_STATUS", "OCUPADA")
+                putExtra("origem", "admin")
+            })
+        }
     }
 
     private fun setNavAtivo(ativo: String) {
         navItens.forEach { (item, nav) ->
             val selecionado = item == ativo
-            findViewById<LinearLayout>(nav.layoutId)?.isSelected = selecionado
-            findViewById<ImageView>(nav.iconId)?.isSelected = selecionado
+            val layout = findViewById<LinearLayout>(nav.layoutId) ?: return@forEach
+            val icon   = findViewById<ImageView>(nav.iconId)      ?: return@forEach
+            layout.isSelected = selecionado
+            icon.isSelected   = selecionado
+            icon.imageTintList = android.content.res.ColorStateList.valueOf(
+                if (selecionado) android.graphics.Color.parseColor("#C9A84C")
+                else android.graphics.Color.parseColor("#888888")
+            )
         }
     }
 }

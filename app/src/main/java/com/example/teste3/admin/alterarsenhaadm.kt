@@ -24,7 +24,6 @@ class AlterarSenhaActivity : AppCompatActivity() {
 
     private lateinit var tvErroSenha: TextView
     private lateinit var btnSalvar: Button
-    private lateinit var btnCancelar: Button
     private lateinit var btnVoltar: ImageButton
 
     private lateinit var barForca1: View
@@ -55,7 +54,6 @@ class AlterarSenhaActivity : AppCompatActivity() {
 
         tvErroSenha = findViewById(R.id.tvErroSenha)
         btnSalvar   = findViewById(R.id.btnSalvarAlteracoes)
-        btnCancelar = findViewById(R.id.btnCancelar)
         btnVoltar   = findViewById(R.id.btnVoltar)
 
         barForca1 = findViewById(R.id.barForca1)
@@ -114,8 +112,6 @@ class AlterarSenhaActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // Cancelar
-        btnCancelar.setOnClickListener { finish() }
 
         // Salvar
         btnSalvar.setOnClickListener {

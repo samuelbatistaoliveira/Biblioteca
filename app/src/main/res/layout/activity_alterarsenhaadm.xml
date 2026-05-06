@@ -449,20 +449,7 @@
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
-        <!-- Botão Cancelar -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnCancelar"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="32dp"
-            android:background="@drawable/button_outline_gold"
-            android:fontFamily="sans-serif-medium"
-            android:text="Cancelar"
-            android:textAllCaps="false"
-            android:textColor="#2D2D2D"
-            android:textSize="16sp" />
+
     </LinearLayout>
 
 </ScrollView>

@@ -20,11 +20,11 @@ class CheckAdmin : AppCompatActivity() {
     private data class NavItem(val layoutId: Int, val iconId: Int)
 
     private val navItens = mapOf(
-        "menu"     to NavItem(R.id.navChat,     R.id.iconChat),
-        "home"     to NavItem(R.id.navHome,     R.id.iconHome),
-        "reservas" to NavItem(R.id.navReservas, R.id.iconReservas),
-        "salas"    to NavItem(R.id.navSalas,    R.id.iconSalas),
-        "perfil"   to NavItem(R.id.navPerfil,   R.id.iconPerfil)
+        "chat"       to NavItem(R.id.navChat,       R.id.iconChat),
+        "home"       to NavItem(R.id.navHome,       R.id.iconHome),
+        "calendar"   to NavItem(R.id.navCalendar,   R.id.iconCalendar),
+        "categories" to NavItem(R.id.navCategories, R.id.iconCategories),
+        "profile"    to NavItem(R.id.navProfile,    R.id.iconProfile)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +36,6 @@ class CheckAdmin : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener { finish() }
 
-        // Switches
         val switches = listOf(
             Pair(findViewById<SwitchMaterial>(R.id.switchTurno1), findViewById<ImageView>(R.id.iconTurno1)),
             Pair(findViewById<SwitchMaterial>(R.id.switchTurno2), findViewById<ImageView>(R.id.iconTurno2)),
@@ -60,7 +59,7 @@ class CheckAdmin : AppCompatActivity() {
                 .show()
         }
 
-        setNavAtivo("reservas")
+        setNavAtivo("calendar")
 
         findViewById<LinearLayout>(R.id.navChat)?.setOnClickListener {
             startActivity(Intent(this, AluguelAdmin::class.java))
@@ -70,13 +69,15 @@ class CheckAdmin : AppCompatActivity() {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             })
         }
-        findViewById<LinearLayout>(R.id.navReservas)?.setOnClickListener {
+        findViewById<LinearLayout>(R.id.navCalendar)?.setOnClickListener {
             startActivity(Intent(this, AdmSalas::class.java))
         }
-        findViewById<LinearLayout>(R.id.navSalas)?.setOnClickListener {
-            startActivity(Intent(this, AdmSalas::class.java))
+        findViewById<LinearLayout>(R.id.navCategories)?.setOnClickListener {
+            startActivity(Intent(this, com.example.teste3.mapa.MapaLivroActivity::class.java).apply {
+                putExtra("origem", "admin")
+            })
         }
-        findViewById<LinearLayout>(R.id.navPerfil)?.setOnClickListener {
+        findViewById<LinearLayout>(R.id.navProfile)?.setOnClickListener {
             startActivity(Intent(this, perfiladm::class.java))
         }
     }
@@ -84,8 +85,14 @@ class CheckAdmin : AppCompatActivity() {
     private fun setNavAtivo(ativo: String) {
         navItens.forEach { (item, nav) ->
             val selecionado = item == ativo
-            findViewById<LinearLayout>(nav.layoutId)?.isSelected = selecionado
-            findViewById<ImageView>(nav.iconId)?.isSelected = selecionado
+            val layout = findViewById<LinearLayout>(nav.layoutId) ?: return@forEach
+            val icon   = findViewById<ImageView>(nav.iconId)      ?: return@forEach
+            layout.isSelected = selecionado
+            icon.isSelected   = selecionado
+            icon.imageTintList = android.content.res.ColorStateList.valueOf(
+                if (selecionado) android.graphics.Color.parseColor("#C9A84C")
+                else android.graphics.Color.parseColor("#888888")
+            )
         }
     }
 

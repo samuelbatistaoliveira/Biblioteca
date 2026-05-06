@@ -105,6 +105,7 @@ class Disponivel : AppCompatActivity() {
                 putExtra("ponto_x", 0.65f)
                 putExtra("ponto_y", 0.30f)
                 putExtra("localizacao_texto", "Ciências — Estante 3, Prat. B")
+                putExtra("origem", origem)
                 putExtra("origem", "aluno")
             })
         }

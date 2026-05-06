@@ -171,7 +171,7 @@
                     android:letterSpacing="0.08"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
-                    android:text="Livre"
+                    android:text="Disponível"
                     android:textAllCaps="true"
                     android:textColor="#2C1F0E"
                     android:textSize="11sp" />
@@ -279,7 +279,7 @@
                     android:letterSpacing="0.08"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
-                    android:text="Livre"
+                    android:text="Disponível"
                     android:textAllCaps="true"
                     android:textColor="#2C1F0E"
                     android:textSize="11sp" />
@@ -387,7 +387,7 @@
                     android:letterSpacing="0.08"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
-                    android:text="Livre"
+                    android:text="Disponível"
                     android:textAllCaps="true"
                     android:textColor="#2C1F0E"
                     android:textSize="11sp" />
@@ -402,114 +402,11 @@
         android:layout_height="1dp"
         android:background="#2A2A2A" />
 
-    <!-- BOTTOM NAV SEM LABELS -->
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:background="#1A1A1A"
-        android:gravity="center_vertical">
+        android:layout_height="1dp"
+        android:background="#2A2A2A" />
 
-        <!-- Menu -->
-        <LinearLayout
-            android:id="@+id/navChat"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:id="@+id/iconChat"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@drawable/ic_menu"
-                android:contentDescription="Menu"
-                app:tint="@color/bottom_nav_colors" />
-        </LinearLayout>
-
-        <!-- Home -->
-        <LinearLayout
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:id="@+id/iconHome"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@drawable/ic_home"
-                android:contentDescription="Início"
-                app:tint="@color/bottom_nav_colors" />
-        </LinearLayout>
-
-        <!-- Reservas -->
-        <LinearLayout
-            android:id="@+id/navReservas"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:id="@+id/iconReservas"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@drawable/ic_calendar"
-                android:contentDescription="Reservas"
-                app:tint="@color/bottom_nav_colors" />
-        </LinearLayout>
-
-        <!-- Salas -->
-        <LinearLayout
-            android:id="@+id/navSalas"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:id="@+id/iconSalas"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@drawable/ic_signpost"
-                android:contentDescription="Salas"
-                app:tint="@color/bottom_nav_colors" />
-        </LinearLayout>
-
-        <!-- Perfil -->
-        <LinearLayout
-            android:id="@+id/navPerfil"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:id="@+id/iconPerfil"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@drawable/ic_person"
-                android:contentDescription="Perfil"
-                app:tint="@color/bottom_nav_colors" />
-        </LinearLayout>
-
-    </LinearLayout>
+    <include layout="@layout/bottom_nav_admin" />
 
 </LinearLayout>
