@@ -106,7 +106,6 @@ class Disponivel : AppCompatActivity() {
                 putExtra("ponto_y", 0.30f)
                 putExtra("localizacao_texto", "Ciências — Estante 3, Prat. B")
                 putExtra("origem", origem)
-                putExtra("origem", "aluno")
             })
         }
         findViewById<LinearLayout>(R.id.navPerfil).setOnClickListener {
@@ -119,6 +118,7 @@ class Disponivel : AppCompatActivity() {
             it.putExtra("SALA_NOME", nomeSala)
             it.putExtra("SALA_ANDAR", andar)
             it.putExtra("SALA_CAPACIDADE", capacidade)
+            it.putExtra("origem", origem)
             startActivity(it)
         }
     }
@@ -129,6 +129,7 @@ class Disponivel : AppCompatActivity() {
             it.putExtra("SALA_ANDAR", andar)
             it.putExtra("SALA_CAPACIDADE", capacidade)
             it.putExtra("SALA_STATUS", status)
+            it.putExtra("origem", origem)
             startActivity(it)
         }
     }

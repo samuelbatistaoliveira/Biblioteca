@@ -81,9 +81,7 @@ class MapaLivroActivity : AppCompatActivity() {
                 })
             }
             findViewById<LinearLayout>(R.id.navCalendar).setOnClickListener {
-                startActivity(Intent(this, com.example.teste3.salas.Disponivel::class.java).apply {
-                    putExtra("origem", "admin")
-                })
+                startActivity(Intent(this, com.example.teste3.salas.AdmSalas::class.java)) // ✅ era Disponivel
             }
             findViewById<LinearLayout>(R.id.navCategories).setOnClickListener { }
             findViewById<LinearLayout>(R.id.navProfile).setOnClickListener {

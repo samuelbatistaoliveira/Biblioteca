@@ -97,11 +97,11 @@ class CheckAdmin : AppCompatActivity() {
     }
 
     private fun atualizarIcone(ativo: Boolean, icon: ImageView) {
-        val cor = if (ativo) {
-            ContextCompat.getColor(this, R.color.gold)
-        } else {
-            ContextCompat.getColor(this, R.color.bottom_nav_icon_color)
-        }
-        icon.setColorFilter(cor)
+        icon.imageTintList = android.content.res.ColorStateList.valueOf(
+            android.graphics.Color.parseColor(if (ativo) "#3B2A0E" else "#888888")
+        )
+        icon.setBackgroundResource(
+            if (ativo) R.drawable.circle_gold_bg else R.drawable.circle_gray_bg
+        )
     }
 }

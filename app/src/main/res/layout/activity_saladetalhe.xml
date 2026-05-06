@@ -375,7 +375,7 @@
                 android:layout_height="22dp"
                 android:src="@drawable/ic_calendar"
                 android:contentDescription="Reservas"
-                app:tint="@color/bottom_nav_icon_color" />
+                app:tint="#C9A84C" />
         </LinearLayout>
 
         <LinearLayout
