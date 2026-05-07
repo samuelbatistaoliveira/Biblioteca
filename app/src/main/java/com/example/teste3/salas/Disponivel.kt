@@ -29,13 +29,16 @@ class Disponivel : AppCompatActivity() {
 
         // Salas LIVRES
         findViewById<LinearLayout>(R.id.cardSalaA).setOnClickListener {
-            abrirHorarios("Sala A", "Andar 1", "6")
+            if (origem == "admin") abrirCheckAdmin("Sala A", "Andar 1", "6")
+            else abrirHorarios("Sala A", "Andar 1", "6")
         }
         findViewById<LinearLayout>(R.id.cardSalaB).setOnClickListener {
-            abrirHorarios("Sala B", "Andar 1", "8")
+            if (origem == "admin") abrirCheckAdmin("Sala B", "Andar 1", "8")
+            else abrirHorarios("Sala B", "Andar 1", "8")
         }
         findViewById<LinearLayout>(R.id.cardSalaE).setOnClickListener {
-            abrirHorarios("Sala E", "Andar 1", "4")
+            if (origem == "admin") abrirCheckAdmin("Sala E", "Andar 1", "4")
+            else abrirHorarios("Sala E", "Andar 1", "4")
         }
 
         // Salas OCUPADAS
@@ -163,6 +166,14 @@ class Disponivel : AppCompatActivity() {
                 if (selecionado) android.graphics.Color.parseColor("#C9A84C")
                 else android.graphics.Color.parseColor("#888888")
             )
+        }
+    }
+    private fun abrirCheckAdmin(nomeSala: String, andar: String, capacidade: String) {
+        Intent(this, CheckAdmin::class.java).also {
+            it.putExtra("SALA_NOME", nomeSala)
+            it.putExtra("SALA_ANDAR", andar)
+            it.putExtra("SALA_CAPACIDADE", capacidade)
+            startActivity(it)
         }
     }
 }

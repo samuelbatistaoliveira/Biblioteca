@@ -10,18 +10,18 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#000000"
-        app:elevation="4dp">
+        android:background="#2C1F00"
+        app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="Cadastro do Livro"
-            app:titleTextColor="#FFFFFF"
+            app:titleTextColor="#C9A84C"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:navigationIconTint="#FFFFFF"
-            android:background="#000000" />
+            app:navigationIconTint="#C9A84C"
+            android:background="#2C1F00" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -172,7 +172,7 @@
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
                     android:text="Disponível"
-                    android:textAllCaps="true"
+                    android:textAllCaps="false"
                     android:textColor="#2C1F0E"
                     android:textSize="11sp" />
 
@@ -226,7 +226,7 @@
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
                     android:text="Ocupada"
-                    android:textAllCaps="true"
+                    android:textAllCaps="false"
                     android:textColor="#2C1F0E"
                     android:textSize="11sp" />
 
