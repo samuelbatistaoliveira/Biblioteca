@@ -1,0 +1,16 @@
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="forca_fraca">#E53935</color>
+    <!--  Vermelho  — senha fraca   -->
+    <color name="forca_media">#FFA000</color>
+    <!--  Amarelo   — senha média   -->
+    <color name="forca_forte">#43A047</color>
+    <!--  Verde     — senha forte   -->
+    <color name="forca_vazio">#E0D5C0</color>
+    <!--  Bege      — barra vazia   -->
+    <color name="bg_tela">#FDF8F2</color>
+    <color name="bottom_nav_icon_color">#666666</color>
+    <color name="gold">#C9A84C</color>
+
+</resources>

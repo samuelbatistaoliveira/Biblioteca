@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+=======================================================================
+  ARQUIVO: fragment_mapa_andar.xml
+  USO: Inflado pelo MapaAdapter para cada andar no ViewPager2
+  Contém a CustomMapView que suporta zoom por pinça e scroll
+=======================================================================
+-->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5EFE6">
+
+    <!--
+        CustomMapView = View customizada em Kotlin que você criará.
+        Ela renderiza:
+          1. A imagem do mapa (map_terreo.png ou map_primeiro_andar.png)
+          2. Um ponto vermelho pulsante na posição (pontoX, pontoY)
+          3. Suporte a pinch-to-zoom e pan (arrastar)
+
+        O ID "mapaView" é referenciado no MapaViewHolder do adapter.
+    -->
+    <!-- PARA: -->
+    <com.example.teste3.views.CustomMapView
+        android:id="@+id/mapaView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--
+        Overlay de carregamento — visível enquanto a imagem carrega
+    -->
+    <LinearLayout
+        android:id="@+id/layoutCarregando"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#F5EFE6"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:indeterminateTint="#C9A84C" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Carregando mapa..."
+            android:textColor="#7A6A55"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif" />
+
+    </LinearLayout>
+
+</FrameLayout>

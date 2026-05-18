@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FDF8F2">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_header_gradient"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingHorizontal="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Biblioteca Digital"
+            android:textColor="#C9A84C"
+            android:textSize="11sp"
+            android:textAllCaps="true"
+            android:letterSpacing="0.15"
+            android:fontFamily="sans-serif-medium" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="2dp">
+
+            <ImageView
+                android:id="@+id/btnVoltar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="Voltar"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                app:tint="#C9A84C" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Localização do Livro"
+                android:textColor="#EDE3D5"
+                android:textSize="20sp"
+                android:fontFamily="serif"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Linha dourada -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#C9A84C" />
+
+    <!-- BANNER -->
+    <TextView
+        android:id="@+id/tvNomeLivro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
+        android:text="📍 Seção de Ciências — Estante 3, Prateleira B"
+        android:textColor="#2C1F0E"
+        android:textSize="13sp"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@drawable/bg_banner_info"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="16dp" />
+
+    <!-- TABS -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_tab_container"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/tabTerreo"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1º Andar"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#2C1F0E"
+            android:background="@drawable/bg_tab_selected"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/tabPrimeiroAndar"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Térreo"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#7A6A55"
+            android:background="@drawable/bg_tab_unselected"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+    <!-- Dica swipe -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="← Deslize para alternar entre os andares →"
+        android:textColor="#A89880"
+        android:textSize="10sp"
+        android:gravity="center"
+        android:fontFamily="sans-serif" />
+
+    <!-- VIEWPAGER2 — ocupa todo o espaço restante -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerMapas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="6dp"
+        android:background="#FFFFFF" />
+
+    <!-- LEGENDA -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingVertical="6dp">
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/bg_dot_localizacao"
+            android:layout_marginEnd="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Localização do livro"
+            android:textColor="#7A6A55"
+            android:textSize="11sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="12dp"
+            android:background="#C9A84C"
+            android:layout_marginHorizontal="12dp" />
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/ic_zoom_in"
+            android:layout_marginEnd="4dp"
+            app:tint="#7A6A55"
+            android:contentDescription="Zoom" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pinçe para dar zoom"
+            android:textColor="#7A6A55"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <!-- DIVISOR -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2A2A2A" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#1A1A1A"
+        android:orientation="horizontal"
+        android:elevation="20dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout android:id="@+id/navChat" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:foreground="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+            <ImageView android:id="@+id/iconChat" android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_chat" android:contentDescription="Chat" app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/navHome" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:foreground="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+            <ImageView android:id="@+id/iconHome" android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_home" android:contentDescription="Início" app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/navReservas" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:foreground="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+            <ImageView android:id="@+id/iconReservas" android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_calendar" android:contentDescription="Reservas" app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/navSalas" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:foreground="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+            <ImageView android:id="@+id/iconSalas" android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_signpost" android:contentDescription="Salas" app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/navPerfil" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:foreground="?attr/selectableItemBackground" android:clickable="true" android:focusable="true">
+            <ImageView android:id="@+id/iconPerfil" android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/ic_person" android:contentDescription="Perfil" app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+

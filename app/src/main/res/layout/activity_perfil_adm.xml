@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <!-- ── BOTTOM NAVIGATION FIXA ── -->
+    <LinearLayout
+        android:id="@+id/bottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom"
+        android:background="#121212"
+        android:elevation="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/navMenu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Menu">
+            <ImageView
+                android:id="@+id/iconMenu"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_menu"
+                android:contentDescription="Menu"
+                app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Início">
+            <ImageView
+                android:id="@+id/iconHome"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_home"
+                android:contentDescription="Início"
+                app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navCalendar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Calendário">
+            <ImageView
+                android:id="@+id/iconCalendar"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_calendar"
+                android:contentDescription="Calendário"
+                app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navSignpost"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Mapa">
+            <ImageView
+                android:id="@+id/iconSignpost"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_signpost"
+                android:contentDescription="Mapa"
+                app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navPerfil"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Perfil">
+            <ImageView
+                android:id="@+id/iconPerfil"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_person"
+                android:contentDescription="Perfil"
+                app:tint="@color/bottom_nav_colors" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- ── SCROLL DO CONTEÚDO ── -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FDF8F2"
+        android:paddingBottom="64dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:focusable="false">
+
+            <!-- ── HEADER ── -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:focusable="false">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:focusable="false">
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:text="Painel Admin"
+                        android:textColor="#121212"
+                        android:textIsSelectable="false"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/badge_dark_bg"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="3dp"
+                        android:text="● ADMINISTRADOR"
+                        android:textColor="#C8A96E"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textIsSelectable="false"
+                        android:focusable="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:focusable="false">
+
+                    <!-- Botão lápis: 48x48dp para touch target correto -->
+                    <FrameLayout
+                        android:id="@+id/btnEditarPerfil"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_dark_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Editar perfil">
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_edit"
+                            android:focusable="false"
+                            android:contentDescription="Editar perfil"
+                            app:tint="#C8A96E" />
+                    </FrameLayout>
+
+                    <!-- Botão engrenagem: 48x48dp para touch target correto -->
+                    <FrameLayout
+                        android:id="@+id/btnConfiguracoes"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/circle_dark_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Configurações">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:focusable="false"
+                            android:contentDescription="Configurações"
+                            android:src="@drawable/ic_settings"
+                            app:tint="#C8A96E" />
+                    </FrameLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- ── CARD DE USUÁRIO ADMIN ── -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:focusable="false"
+                app:cardBackgroundColor="#EDE0CE"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:focusable="false">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:background="#C8A96E" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="20dp"
+                        android:gravity="center_vertical"
+                        android:focusable="false">
+
+                        <FrameLayout
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:focusable="false">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/ivAvatar"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                android:src="@drawable/veio"
+                                android:focusable="false"
+                                android:contentDescription="Foto do administrador"
+                                app:civ_border_color="#C8A96E"
+                                app:civ_border_width="3dp" />
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="bottom|end"
+                                android:background="@drawable/circle_gold_bg"
+                                android:gravity="center"
+                                android:text="★"
+                                android:textColor="#121212"
+                                android:textSize="10sp"
+                                android:focusable="false"
+                                android:textIsSelectable="false" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingStart="16dp"
+                            android:focusable="false">
+
+                            <TextView
+                                android:id="@+id/tvUserName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Nome do Admin"
+                                android:textColor="#2C1F0E"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textIsSelectable="false"
+                                android:focusable="false" />
+
+                            <TextView
+                                android:id="@+id/tvUserEmail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="admin@biblioteca.com"
+                                android:textColor="#7A6A55"
+                                android:textSize="12sp"
+                                android:textIsSelectable="false"
+                                android:focusable="false" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/badge_dark_bg"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="3dp"
+                                android:text="★ Administrador"
+                                android:textColor="#C8A96E"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:textIsSelectable="false"
+                                android:focusable="false" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── ESTATÍSTICAS ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="24dp"
+                android:orientation="horizontal"
+                android:focusable="false">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:focusable="false"
+                    app:cardBackgroundColor="#F4EDE3"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="14dp"
+                        android:focusable="false">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="134"
+                            android:textColor="#C8A96E"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textIsSelectable="false"
+                            android:focusable="false" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Usuários"
+                            android:textColor="#888888"
+                            android:textSize="11sp"
+                            android:layout_marginTop="2dp"
+                            android:textIsSelectable="false"
+                            android:focusable="false" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:focusable="false"
+                    app:cardBackgroundColor="#F4EDE3"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="14dp"
+                        android:focusable="false">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="57"
+                            android:textColor="#C8A96E"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textIsSelectable="false"
+                            android:focusable="false" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Livros"
+                            android:textColor="#888888"
+                            android:textSize="11sp"
+                            android:layout_marginTop="2dp"
+                            android:textIsSelectable="false"
+                            android:focusable="false" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:focusable="false"
+                    app:cardBackgroundColor="#F4EDE3"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="14dp"
+                        android:focusable="false">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="7"
+                            android:textColor="#C0392B"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textIsSelectable="false"
+                            android:focusable="false" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Atrasos"
+                            android:textColor="#888888"
+                            android:textSize="11sp"
+                            android:layout_marginTop="2dp"
+                            android:textIsSelectable="false"
+                            android:focusable="false" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="12dp"
+                android:focusable="false"
+                android:text="Gerenciar"
+                android:textColor="#121212"
+                android:textIsSelectable="false"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- ACERVO -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardGerenciarAcervo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:contentDescription="Gerenciar acervo de livros"
+                app:cardBackgroundColor="#F4EDE3"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="24dp"
+                    android:gravity="center_vertical"
+                    android:focusable="false">
+
+                    <FrameLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/circle_dark_bg"
+                        android:focusable="false">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_signpost"
+                            android:focusable="false"
+                            android:contentDescription="Acervo"
+                            app:tint="#C8A96E" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="14dp"
+                        android:focusable="false">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Acervo"
+                            android:textColor="#2C1F0E"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textIsSelectable="false"
+                            android:focusable="false" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Adicionar, editar e remover livros"
+                            android:textColor="#888888"
+                            android:textSize="12sp"
+                            android:textIsSelectable="false"
+                            android:focusable="false" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_arrow_right"
+                        android:focusable="false"
+                        android:contentDescription="Ir para acervo"
+                        app:tint="#555555" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ATRASOS -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardVerAtrasos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:contentDescription="Ver atrasos e multas"
+                app:cardBackgroundColor="#F4EDE3"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="24dp"
+                    android:gravity="center_vertical"
+                    android:focusable="false">
+
+                    <FrameLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/circle_dark_bg"
+                        android:focusable="false">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_calendar"
+                            android:focusable="false"
+                            android:contentDescription="Atrasos e Multas"
+                            app:tint="#C0392B" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="14dp"
+                        android:focusable="false">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Atrasos e Multas"
+                            android:textColor="#2C1F0E"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textIsSelectable="false"
+                            android:focusable="false" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Ver e cobrar pendências dos alunos"
+                            android:textColor="#888888"
+                            android:textSize="12sp"
+                            android:textIsSelectable="false"
+                            android:focusable="false" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/badge_red_bg"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="4dp"
+                        android:text="7"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textIsSelectable="false"
+                        android:focusable="false" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_arrow_right"
+                        android:focusable="false"
+                        android:contentDescription="Ir para atrasos e multas"
+                        app:tint="#555555" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- AVISO ADMIN -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:focusable="false"
+                app:cardBackgroundColor="#2C1F0E"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:focusable="false">
+
+                    <TextView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:gravity="center"
+                        android:text="★"
+                        android:textColor="#C8A96E"
+                        android:textSize="18sp"
+                        android:textIsSelectable="false"
+                        android:focusable="false" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="10dp"
+                        android:text="Você está no modo administrador. Suas ações afetam todos os usuários do sistema."
+                        android:textColor="#C8A96E"
+                        android:textSize="12sp"
+                        android:textIsSelectable="false"
+                        android:focusable="false" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

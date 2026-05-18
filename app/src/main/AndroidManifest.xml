@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Teste3"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Teste3"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".login.LoginActivity" android:exported="false" />
+        <activity android:name=".login.CadastrarContaActivity" android:exported="false" />
+        <activity android:name=".login.RecuperarSenhaActivity" android:exported="false" />
+        <activity android:name=".login.ChatbotActivity" android:exported="false" />
+
+        <activity android:name=".home_aluno.HomeActivity" android:exported="false" />
+
+        <activity android:name=".detalhe_livro.BookDetailActivity" android:exported="false" />
+
+        <activity android:name=".aluguel_livros.AluguelActivity" android:exported="false" />
+
+        <!-- Admin -->
+        <activity android:name=".admin.HomeAdminActivity"
+            android:exported="false" />
+        <activity android:name=".admin.DetalhesAdminActivity"
+            android:exported="false" />
+
+        <activity android:name=".admin.CadastroLivroActivity"
+            android:exported="false" />
+
+        <activity android:name=".admin.EditarLivroActivity"
+            android:exported="false" />
+        <activity android:name=".admin.perfiladm"
+            android:exported="false" />
+        <activity android:name=".admin.configadm"
+            android:exported="false" />
+        <activity android:name=".admin.AlterarSenhaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.editarperfiladm"
+            android:exported="false" />
+        <activity
+            android:name=".salas.AdmSalas"
+            android:exported="false" />
+
+
+        <!-- Perfil -->
+        <activity android:name=".perfil.PrincipalPerfil"
+            android:exported="false" />
+
+        <activity android:name=".perfil.EditarPerfil"
+            android:exported="false" />
+        <activity android:name=".perfil.configuracoes"
+            android:exported="false" />
+        <activity android:name=".perfil.multas"
+            android:exported="false" />
+        <activity android:name=".perfil.AlterarSenhaActivity"
+            android:exported="false" />
+
+        <!-- Salas -->
+        <activity android:name=".salas.Disponivel"
+            android:exported="false" />
+        <activity android:name=".salas.salahorarios"
+            android:exported="false" />
+        <activity android:name=".salas.saladetalhe"
+            android:exported="false" />
+
+        <!-- Mapa -->
+        <activity
+            android:name=".mapa.MapaPrincipal"
+            android:exported="false" />
+        <activity android:name=".mapa.MapaLivroActivity" />
+
+
+        <activity android:name=".admin.AluguelAdmin" />
+        <activity android:name=".admin.solicitacao" />
+        <activity android:name=".admin.Devolucao_admin" />
+        <activity android:name=".salas.CheckAdmin" />
+
+
+
+
+    </application>
+
+</manifest>
