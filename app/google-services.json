@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "465329385969",
+    "project_id": "bibliotecaunifor-57227",
+    "storage_bucket": "bibliotecaunifor-57227.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465329385969:android:c2fb6da0f77c3ad5fb1450",
+        "android_client_info": {
+          "package_name": "com.example.teste3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBN7_mYSUcEyYjEkau9h2gcCgUNO7ywHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
