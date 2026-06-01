@@ -95,7 +95,7 @@ class CadastroLivroActivity : AppCompatActivity() {
                 valido = false
             }
             if (codigo.isEmpty()) {
-                layoutCodigo.error = "Informe o código"
+                layoutCodigo.error = "Informe o estado"
                 valido = false
             }
 
