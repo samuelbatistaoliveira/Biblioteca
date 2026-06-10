@@ -47,7 +47,7 @@ O sistema permite que alunos busquem, visualizem, localizem e realizem o aluguel
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/biblioteca-unifor.git
+   git clone https://github.com/samuelbatistaoliveira/Biblioteca
    ```
 
 2. Abra o projeto no Android Studio.
