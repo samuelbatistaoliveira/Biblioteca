@@ -16,11 +16,8 @@ O sistema permite que alunos busquem, visualizem, localizem e realizem o aluguel
 |---|---|
 | Edmilson Cavalcante | Líder do Projeto |
 | Vinícius Estevam Silva | Analista de Requisitos |
+| Samuel Batista Oliveira | Desenvolvedor |
 | Davi Laurentino Oliveira de Souza | Desenvolvedor |
-| Suzani Jia Yi Wang | Desenvolvedora |
-| Yasmin Miranda | Desenvolvedora |
-| Gabriel Oliveira Rios | Desenvolvedor |
-
 ---
 
 ## 🛠️ Tecnologias Utilizadas
@@ -116,5 +113,5 @@ biblioteca-unifor/
 
 ## 🏛️ Disciplina
 
-Projeto desenvolvido para a disciplina de **Requisitos e Modelagem de Sistemas**
+Projeto desenvolvido para a disciplina de **Desenvolvimento de Plataformas Móveis**
 Universidade de Fortaleza — UNIFOR | 2026
