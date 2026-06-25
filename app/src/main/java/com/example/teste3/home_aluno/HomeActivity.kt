@@ -72,10 +72,6 @@ class HomeActivity : AppCompatActivity() {
         carregarLivros()
     }
 
-    override fun onResume() {
-        super.onResume()
-        carregarLivros()
-    }
 
     // ─── mostra um AlertDialog com campo de texto para pesquisar ───────────
     private fun mostrarCaixaDePesquisa() {
@@ -144,41 +140,53 @@ class HomeActivity : AppCompatActivity() {
         val grid = binding.gridBooks
         grid.removeAllViews()
 
-        val itemWidth = (resources.displayMetrics.widthPixels -
-                (32 * resources.displayMetrics.density).toInt()) / 3
+        val spacing = (4 * resources.displayMetrics.density).toInt()
+        val columns = 3
 
-        lista.forEach { livro ->
-            val itemView = LayoutInflater.from(this).inflate(R.layout.item_book, grid, false)
+        // Espera o GridLayout terminar de medir antes de calcular largura real dos itens.
+        // Isso evita o bug de usar a largura da tela inteira (que ignora padding
+        // e causa inconsistência de constraints em diferentes densidades de tela).
+        grid.post {
+            val gridWidth = grid.width - grid.paddingStart - grid.paddingEnd
+            val itemWidth = (gridWidth - spacing * 2 * columns) / columns
 
-            itemView.layoutParams = GridLayout.LayoutParams().apply {
-                width  = itemWidth
-                height = GridLayout.LayoutParams.WRAP_CONTENT
+            lista.forEach { livro ->
+                val itemView = LayoutInflater.from(this).inflate(R.layout.item_book, grid, false)
+
+                itemView.layoutParams = GridLayout.LayoutParams(
+                    GridLayout.spec(GridLayout.UNDEFINED, 1f),
+                    GridLayout.spec(GridLayout.UNDEFINED, 1f)
+                ).apply {
+                    width  = itemWidth
+                    height = GridLayout.LayoutParams.WRAP_CONTENT
+                    setMargins(spacing, spacing, spacing, spacing)
+                }
+
+                val nome   = livro["nome"]     ?: "Sem título"
+                val autor  = livro["autor"]    ?: ""
+                val ano    = livro["ano"]      ?: "-"
+                val genero = livro["genero"]   ?: "-"
+                val capa   = livro["coverUrl"] ?: ""
+
+                itemView.findViewById<TextView>(R.id.tvBookName).text   = nome
+                itemView.findViewById<TextView>(R.id.tvCoverTitle).text = nome
+
+                if (capa.isNotEmpty()) {
+                    itemView.findViewById<ImageView>(R.id.imgCover).load(capa)
+                }
+
+                itemView.setOnClickListener {
+                    startActivity(Intent(this, BookDetailActivity::class.java).apply {
+                        putExtra("book_title",  nome)
+                        putExtra("book_author", autor)
+                        putExtra("book_cover",  capa)
+                        putExtra("book_year",   ano)
+                        putExtra("book_genre",  genero)
+                    })
+                }
+
+                grid.addView(itemView)
             }
-
-            val nome  = livro["nome"]     ?: "Sem título"
-            val autor = livro["autor"]    ?: ""
-            val ano   = livro["ano"]      ?: "-"
-            val genero= livro["genero"]   ?: "-"
-            val capa  = livro["coverUrl"] ?: ""
-
-            itemView.findViewById<TextView>(R.id.tvBookName).text    = nome
-            itemView.findViewById<TextView>(R.id.tvCoverTitle).text  = nome
-
-            if (capa.isNotEmpty()) {
-                itemView.findViewById<ImageView>(R.id.imgCover).load(capa)
-            }
-
-            itemView.setOnClickListener {
-                startActivity(Intent(this, BookDetailActivity::class.java).apply {
-                    putExtra("book_title",  nome)
-                    putExtra("book_author", autor)
-                    putExtra("book_cover",  capa)
-                    putExtra("book_year",   ano)
-                    putExtra("book_genre",  genero)
-                })
-            }
-
-            grid.addView(itemView)
         }
     }
 }

@@ -14,6 +14,9 @@ class DetalhesAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetalhesAdminBinding
     private lateinit var db: FirebaseFirestore
 
+    // ← controla se o livro já foi deletado, pra onResume não tentar recarregar
+    private var foiDeletado = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetalhesAdminBinding.inflate(layoutInflater)
@@ -47,8 +50,15 @@ class DetalhesAdminActivity : AppCompatActivity() {
                 .setTitle("Deletar livro")
                 .setMessage("Tem certeza que deseja deletar?")
                 .setPositiveButton("Deletar") { _, _ ->
-                    db.collection("livros").document(bookId).delete()
-                    finish()
+                    db.collection("livros").document(bookId)
+                        .delete()
+                        .addOnSuccessListener {
+                            foiDeletado = true
+                            finish()
+                        }
+                        .addOnFailureListener {
+                            android.widget.Toast.makeText(this, "Erro ao deletar", android.widget.Toast.LENGTH_SHORT).show()
+                        }
                 }
                 .setNegativeButton("Cancelar", null)
                 .show()
@@ -83,12 +93,16 @@ class DetalhesAdminActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        if (foiDeletado) return  // não recarrega se já foi deletado
+
         val bookId = intent.getStringExtra("book_id") ?: ""
 
         db.collection("livros")
             .document(bookId)
             .get()
             .addOnSuccessListener { doc ->
+                if (!doc.exists()) return@addOnSuccessListener  // proteção extra
+
                 binding.tvBookTitle.text  = doc.getString("nome") ?: ""
                 binding.tvBookAuthor.text = doc.getString("autor") ?: ""
                 binding.tvBookYear.text   = doc.getString("ano") ?: ""

@@ -19,6 +19,20 @@ class HomeAdminActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
 
+    private val cadastroLauncher = registerForActivityResult(
+        androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
+    ) {
+        // Não importa o resultado, sempre recarrega ao voltar do cadastro
+        carregarLivros()
+    }
+
+    private val detalhesLauncher = registerForActivityResult(
+        androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
+    ) {
+        // Recarrega ao voltar da tela de detalhes (cobre deletar, editar, etc.)
+        carregarLivros()
+    }
+
     // ← guarda todos os livros carregados do Firebase
     private val todosOsLivros = mutableListOf<Map<String, String>>()
 
@@ -35,7 +49,7 @@ class HomeAdminActivity : AppCompatActivity() {
 
         // Botão adicionar livro
         findViewById<FloatingActionButton>(R.id.fabAddBook).setOnClickListener {
-            startActivity(Intent(this, CadastroLivroActivity::class.java))
+            cadastroLauncher.launch(Intent(this, CadastroLivroActivity::class.java))
         }
 
         // Bottom nav (sem alteração)
@@ -62,10 +76,6 @@ class HomeAdminActivity : AppCompatActivity() {
         carregarLivros()
     }
 
-    override fun onResume() {
-        super.onResume()
-        carregarLivros()
-    }
 
     // ─── abre dialog de pesquisa ────────────────────────────────────────────
     private fun mostrarCaixaDePesquisa() {
@@ -124,62 +134,68 @@ class HomeAdminActivity : AppCompatActivity() {
                 }
                 renderizarGrid(todosOsLivros)
             }
-            .addOnFailureListener {
-                Toast.makeText(this, "Erro ao carregar livros", Toast.LENGTH_SHORT).show()
+            .addOnFailureListener { exception ->
+                android.util.Log.e("FIREBASE", "Erro: ${exception.message}", exception)
+                Toast.makeText(this, "Erro: ${exception.message}", Toast.LENGTH_LONG).show()
             }
     }
+
 
     // ─── monta o grid com qualquer lista passada ────────────────────────────
     private fun renderizarGrid(lista: List<Map<String, String>>) {
         val grid = findViewById<GridLayout>(R.id.gridBooks)
         grid.removeAllViews()
 
-        val itemWidth = (resources.displayMetrics.widthPixels -
-                (32 * resources.displayMetrics.density).toInt()) / 3
+        val spacing = (4 * resources.displayMetrics.density).toInt()
+        val columns = 3
 
-        lista.forEach { livro ->
-            val itemView = LayoutInflater.from(this).inflate(R.layout.item_book, grid, false)
+        // Espera o GridLayout terminar de medir antes de calcular largura real dos itens.
+        // Isso evita o bug de usar a largura da tela inteira (que ignora padding
+        // e causa inconsistência de constraints em diferentes densidades de tela).
+        grid.post {
+            val gridWidth = grid.width - grid.paddingStart - grid.paddingEnd
+            val itemWidth = (gridWidth - spacing * 2 * columns) / columns
 
-            val colIndex = grid.childCount % 3
-            itemView.layoutParams = GridLayout.LayoutParams(
-                GridLayout.spec(GridLayout.UNDEFINED, 1f),
-                GridLayout.spec(colIndex, 1f)
-            ).apply {
-                width  = itemWidth
-                height = GridLayout.LayoutParams.WRAP_CONTENT
-            }
+            lista.forEach { livro ->
+                val itemView = LayoutInflater.from(this).inflate(R.layout.item_book, grid, false)
 
-            val nome   = livro["nome"]     ?: "Sem título"
-            val autor  = livro["autor"]    ?: ""
-            val ano    = livro["ano"]      ?: ""
-            val genero = livro["genero"]   ?: ""
-            val codigo = livro["codigo"]   ?: ""
-            val capa   = livro["coverUrl"] ?: ""
-            val docId  = livro["id"]       ?: ""
+                itemView.layoutParams = GridLayout.LayoutParams(
+                    GridLayout.spec(GridLayout.UNDEFINED, 1f),
+                    GridLayout.spec(GridLayout.UNDEFINED, 1f)
+                ).apply {
+                    width  = itemWidth
+                    height = GridLayout.LayoutParams.WRAP_CONTENT
+                    setMargins(spacing, spacing, spacing, spacing)
+                }
 
-            itemView.findViewById<TextView>(R.id.tvBookName).text = nome
+                val nome   = livro["nome"]     ?: "Sem título"
+                val autor  = livro["autor"]    ?: ""
+                val ano    = livro["ano"]      ?: ""
+                val genero = livro["genero"]   ?: ""
+                val codigo = livro["codigo"]   ?: ""
+                val capa   = livro["coverUrl"] ?: ""
+                val docId  = livro["id"]       ?: ""
 
-            itemView.findViewById<ImageView>(R.id.imgCover).load(capa.ifEmpty {
-                "https://placehold.co/150x200/png"
-            }) {
-                listener(onError = { _, result ->
-                    android.util.Log.e("COIL", "Erro: ${result.throwable}")
+                itemView.findViewById<TextView>(R.id.tvBookName).text = nome
+
+                itemView.findViewById<ImageView>(R.id.imgCover).load(capa.ifEmpty {
+                    "https://placehold.co/150x200/png"
                 })
-            }
 
-            itemView.setOnClickListener {
-                startActivity(Intent(this, DetalhesAdminActivity::class.java).apply {
-                    putExtra("book_id",     docId)
-                    putExtra("book_title",  nome)
-                    putExtra("book_author", autor)
-                    putExtra("book_cover",  capa)
-                    putExtra("book_year",   ano)
-                    putExtra("book_genre",  genero)
-                    putExtra("book_status", codigo)
-                })
-            }
+                itemView.setOnClickListener {
+                    detalhesLauncher.launch(Intent(this, DetalhesAdminActivity::class.java).apply {
+                        putExtra("book_id",     docId)
+                        putExtra("book_title",  nome)
+                        putExtra("book_author", autor)
+                        putExtra("book_cover",  capa)
+                        putExtra("book_year",   ano)
+                        putExtra("book_genre",  genero)
+                        putExtra("book_status", codigo)
+                    })
+                }
 
-            grid.addView(itemView)
+                grid.addView(itemView)
+            }
         }
     }
 }
